@@ -1,5 +1,5 @@
 # Source: https://github.com/actions-rs/meta/blob/master/recipes/quickstart.md
-name: Continuous integration
+name: Verify
 
 on: [push, pull_request]
 
