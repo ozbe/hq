@@ -4,13 +4,19 @@ use std::path::PathBuf;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-/// Extract html based on css selector.
+/// Extract html based on CSS selectors.
+///
+/// A utility for selecting HTML fragments from an HTML document or fragment with a CSS selector
+/// group.
 struct Args {
-    /// CSS selector group used to extract html fragment from input html
-    selectors: String,
-    /// Path to file containing html document or fragment
+    /// CSS selector group
     ///
-    /// If file argument is missing, hq reads from standard input.
+    /// Group of CSS Selectors used to select HTML fragments from input HTML.
+    selectors: String,
+    /// HTML file
+    ///
+    /// Local file path to a file containing a valid HTML document or fragment. If file argument
+    /// missing, hq reads from standard input.
     #[structopt(parse(from_os_str))]
     file: Option<PathBuf>,
 }
