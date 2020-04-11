@@ -1,7 +1,7 @@
 use scraper::{Html, Selector};
 use std::io::{self, BufRead};
-use structopt::StructOpt;
 use std::path::PathBuf;
+use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 struct Args {
@@ -29,7 +29,7 @@ fn get_html(file: &Option<PathBuf>) -> Html {
 
 fn get_content(file: &Option<PathBuf>) -> String {
     match file {
-        Some(ref file) =>  read_from_file(file),
+        Some(ref file) => read_from_file(file),
         None => read_from_stdin(),
     }
 }
