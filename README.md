@@ -59,6 +59,31 @@ ARGS:
 curl -sL -H "User-Agent: hq" http://example.com | cargo run -- "div > h1"
 ```
 
+## Releases
+
+### Create Release
+
+To create a new release, the only manual part of the process is creating
+and pushing a tag to GitHub. The following commands will create and push
+a tag. Before running the commands, be sure to update `MAJOR`, `MINOR`,
+and `PATCH` based on the current version and
+[Semantic Version](https://semver.org/) guidelines.
+
+**Create and Push Tag**
+```bash
+$ export MAJOR=0 MINOR=1 PATCH=0
+$ git checkout master
+$ git pull
+$ git tag -a v$MAJOR.$MINOR.$PATCH
+# enter tag message
+$ git push origin v$MAJOR.$MINOR.$PATCH
+```
+
+After pushing a new tag, the
+[Publish Workflow](.github/workflows/publish.yml) will create a
+corresponding GitHub Release and attach artifacts for each supported
+platform.
+
 ## License
 
 Licensed under either of
