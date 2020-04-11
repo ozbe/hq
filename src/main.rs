@@ -4,8 +4,13 @@ use std::path::PathBuf;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
+/// Extract html based on css selector.
 struct Args {
+    /// CSS selector group used to extract html fragment from input html
     selectors: String,
+    /// Path to file containing html document or fragment
+    ///
+    /// If file argument is missing, hq reads from standard input.
     #[structopt(parse(from_os_str))]
     file: Option<PathBuf>,
 }
