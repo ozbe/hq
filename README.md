@@ -2,15 +2,15 @@
 
 Extract html based on css selector.
 
-## Example
+## Examples
 
 ### File
 
 ```
- cargo run -- "div > h1" < example.html
+ cargo run -- "div > h1" example.html
 ```
 
-### Curl
+### Pipe (Curl)
 ```
 curl -sL -H "User-Agent: hq" http://example.com | cargo run -- "div > h1"
 ```
