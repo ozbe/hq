@@ -1,4 +1,5 @@
 # hq
+![Verify](https://github.com/ozbe/hq/workflows/Verify/badge.svg)
 
 Extract html based on css selector.
 
