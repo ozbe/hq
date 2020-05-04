@@ -87,7 +87,7 @@ ARGS:
 ### File
 
 ```
-hq -- "div > h1" example.html
+hq "div > h1" example.html
 ```
 
 ### Pipe (Curl)
