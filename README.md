@@ -87,13 +87,13 @@ ARGS:
 ### File
 
 ```
- cargo run -- "div > h1" example.html
+hq -- "div > h1" example.html
 ```
 
 ### Pipe (Curl)
 
 ```
-curl -sL -H "User-Agent: hq" http://example.com | cargo run -- "div > h1"
+curl -sL -H "User-Agent: hq" http://example.com | hq "div > h1"
 ```
 
 ## Releases
