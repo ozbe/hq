@@ -7,11 +7,48 @@ Extract html based on CSS selectors.
 A utility for selecting HTML fragments from an HTML document or fragment
 with a CSS selector group.
 
+## Installation
+
+### macOS (OSX)
+
+```bash
+$ curl -L https://github.com/ozbe/hq/releases/download/v0.1.0/hq-macos -o hq
+$ chmod +x hq
+$ cp hq /usr/local/bin
+$ rm hq
+```
+
+### Ubuntu (Linux)
+
+```bash
+$ wget https://github.com/ozbe/hq/releases/download/v0.1.0/hq-linux -o hq
+$ chmod +x hq
+$ cp hq /usr/local/bin
+$ rm hq
+```
+
+### Windows
+
+Download the latest Windows
+[release](https://github.com/ozbe/hq/releases) and place the executable
+in a folder that is in your $PATH.
+
+## Compile from Source
+
+```bash
+$ git clone git@github.com:ozbe/hq.git
+$ cd hq
+$ cargo build --release
+```
+
+The build output is `./target/release/hq`. Copy and execute that as you
+desire.
+
 ## Usage
 
 A platform specific build of hq can be run in the corresponding
-platform's command line interface. Run hq with `cargo run -- -h` or
-`cargo run -- --help` to view the latest* available flags, arguments and
+platform's command line interface. Run hq with `hq -h` or
+`hq --help` to view the latest available flags, arguments, and
 commands.
 
 Here is an example of the long help output (`--help`):
