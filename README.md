@@ -47,8 +47,8 @@ desire.
 ## Usage
 
 A platform specific build of hq can be run in the corresponding
-platform's command line interface. Run hq with `cargo run -- -h` or
-`cargo run -- --help` to view the latest* available flags, arguments and
+platform's command line interface. Run hq with `hq -h` or
+`hq --help` to view the latest available flags, arguments, and
 commands.
 
 Here is an example of the long help output (`--help`):
