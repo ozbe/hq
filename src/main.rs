@@ -38,7 +38,7 @@ fn main() -> Result<()> {
 
 fn get_selector(selectors: &str) -> Result<Selector> {
     Selector::parse(selectors)
-        .map_err(ParseError::from)
+        .map_err(SelectorParseError::from)
         .with_context(|| format!("could not parse selectors `{}`", selectors))
         .map_err(From::from)
 }
@@ -78,15 +78,15 @@ fn extract(selector: &Selector, html: Html) {
 }
 
 #[derive(Debug)]
-struct ParseError(String);
+struct SelectorParseError(String);
 
-impl Display for ParseError {
+impl Display for SelectorParseError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         self.0.fmt(f)
     }
 }
 
-impl<'i> From<cssparser::ParseError<'i, SelectorParseErrorKind<'i>>> for ParseError {
+impl<'i> From<cssparser::ParseError<'i, SelectorParseErrorKind<'i>>> for SelectorParseError {
     fn from(e: cssparser::ParseError<'i, SelectorParseErrorKind<'i>>) -> Self {
         let msg = match e.kind {
             ParseErrorKind::Basic(b) => match b {
@@ -154,8 +154,8 @@ impl<'i> From<cssparser::ParseError<'i, SelectorParseErrorKind<'i>>> for ParseEr
                 SelectorParseErrorKind::EmptyNegation => "empty negation".to_string(),
             },
         };
-        ParseError(msg)
+        SelectorParseError(msg)
     }
 }
 
-impl Error for ParseError {}
+impl Error for SelectorParseError {}
