@@ -5,5 +5,9 @@ authors = ["ozbe <1372945+ozbe@users.noreply.github.com>"]
 edition = "2018"
 
 [dependencies]
+cssparser = "0.25.9"
+failure = "0.1.8"
+exitfailure = "0.5.1"
 scraper = "0.11.0"
+selectors = "0.21.0"
 structopt = "0.3.12"
