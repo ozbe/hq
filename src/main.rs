@@ -1,11 +1,9 @@
+use anyhow::{Context, Result};
 use cssparser::{BasicParseErrorKind, ParseErrorKind};
-use exitfailure::ExitFailure;
-use failure::ResultExt;
-use failure::_core::fmt::Formatter;
 use scraper::{Html, Selector};
 use selectors::parser::SelectorParseErrorKind;
 use std::error::Error;
-use std::fmt::Display;
+use std::fmt::{Display, Formatter};
 use std::io::{self, BufRead};
 use std::path::PathBuf;
 use structopt::StructOpt;
@@ -28,7 +26,7 @@ struct Args {
     file: Option<PathBuf>,
 }
 
-fn main() -> Result<(), ExitFailure> {
+fn main() -> Result<()> {
     let args = Args::from_args();
 
     let selector = get_selector(&args.selectors)?;
@@ -38,28 +36,28 @@ fn main() -> Result<(), ExitFailure> {
     Ok(())
 }
 
-fn get_selector(selectors: &str) -> Result<Selector, failure::Error> {
+fn get_selector(selectors: &str) -> Result<Selector> {
     Selector::parse(selectors)
         .map_err(ParseError::from)
-        .with_context(|_| format!("could not parse selectors `{}`", selectors))
+        .with_context(|| format!("could not parse selectors `{}`", selectors))
         .map_err(From::from)
 }
 
-fn get_html(file: &Option<PathBuf>) -> Result<Html, failure::Error> {
+fn get_html(file: &Option<PathBuf>) -> Result<Html> {
     let fragment = get_content(file)?;
     Ok(Html::parse_fragment(&fragment))
 }
 
-fn get_content(file: &Option<PathBuf>) -> Result<String, failure::Error> {
+fn get_content(file: &Option<PathBuf>) -> Result<String> {
     match file {
         Some(ref file) => read_from_file(file),
         None => Ok(read_from_stdin()),
     }
 }
 
-fn read_from_file(path: &PathBuf) -> Result<String, failure::Error> {
+fn read_from_file(path: &PathBuf) -> Result<String> {
     std::fs::read_to_string(path)
-        .with_context(|_| format!("could not read file `{}`", path.as_path().display()))
+        .with_context(|| format!("could not read file `{}`", path.as_path().display()))
         .map_err(From::from)
 }
 
